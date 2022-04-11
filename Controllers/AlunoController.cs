@@ -13,14 +13,13 @@ namespace controle_escolar.Controllers
     public class AlunoController : ControllerBase
     {
 
-        private readonly IBaseRepository _repository;
+        private readonly IAlunoRepository _repository;
 
-        public AlunoController(IBaseRepository repository)
+        public AlunoController(IAlunoRepository repository)
         {
             _repository = repository;
         }
-
-
+        
 
         [HttpGet]
         [Route("")]
@@ -41,8 +40,7 @@ namespace controle_escolar.Controllers
                 ? Ok(aluno)
                 : BadRequest("Aluno não encontrado");
         }
-
-
+        
         [HttpPost]
         public async Task<IActionResult> Post(Aluno aluno)
         {
@@ -64,8 +62,7 @@ namespace controle_escolar.Controllers
             return await _repository.SaveChangesAsync()
                 ? Ok("Empresa adicionada")
                 : BadRequest("Erro ao adicionar a Empresa");
-
-
+            
 
         }
 

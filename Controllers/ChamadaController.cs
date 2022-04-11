@@ -12,9 +12,9 @@ namespace controle_escolar.Controllers
     public class ChamadaController : ControllerBase
     {
 
-        private readonly IBaseRepository _repository;
+        private readonly IChamadaRepository _repository;
 
-        public ChamadaController(IBaseRepository repository)
+        public ChamadaController(IChamadaRepository repository)
         {
             _repository = repository;
         }

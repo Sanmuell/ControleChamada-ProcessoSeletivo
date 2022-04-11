@@ -12,9 +12,9 @@ namespace controle_escolar.Controllers
     public class TurmaController : ControllerBase
     {
 
-        private readonly IBaseRepository _repository;
+        private readonly ITurmaRepository _repository;
 
-        public TurmaController(IBaseRepository repository)
+        public TurmaController(ITurmaRepository repository)
         {
             _repository = repository;
         }
@@ -67,12 +67,13 @@ namespace controle_escolar.Controllers
 
         }
 
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTurma(int id)
         {
             if (id <= 0) return BadRequest("Turma não informada");
 
-            var turma = await _repository.GetAlunoByIdAsync(id);
+            var turma = await _repository.GetTurmaByIdAsync(id);
 
             if (turma == null)
                 return NotFound("Turma não encontrada na base de dados");
@@ -84,6 +85,8 @@ namespace controle_escolar.Controllers
                 : BadRequest("Erro ao deletar Turma");
 
         }
+        
+        
 
     }
 }

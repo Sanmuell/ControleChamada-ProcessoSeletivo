@@ -1,16 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using controle_escolar.Data;
 using controle_escolar.Repositories;
 using controle_escolar.Repositories.Interfaces;
@@ -32,6 +25,9 @@ namespace controle_escolar
 
             services.AddControllers();
             services.AddScoped<IBaseRepository, BaseRepository>();
+            services.AddScoped<IAlunoRepository, AlunoRepository>();
+            services.AddScoped<ITurmaRepository, TurmaRepository>();
+            services.AddScoped<IChamadaRepository, ChamadaRepository>();
             services.AddDbContext<DataContext>();
             services.AddSwaggerGen(c =>
             {

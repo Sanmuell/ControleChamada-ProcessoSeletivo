@@ -11,17 +11,7 @@ namespace controle_escolar.Repositories.Interfaces
         public void Update<T>(T entity) where T : class;
 
         public void Delete<T>(T entity) where T : class;
-
-        Task<IEnumerable<Aluno>> GetAllAlunos();
-
-        Task<IEnumerable<Turma>> GetAllTurmas();
-
-        Task<IEnumerable<Chamada>> GetAllChamadas();
         
-        Task<Aluno> GetAlunoByIdAsync(int id);
-        
-        Task<Turma> GetTurmaByIdAsync(int id);
-
         Task<bool> SaveChangesAsync();
 
     }
