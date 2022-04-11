@@ -35,7 +35,13 @@ namespace controle_escolar
             services.AddDbContext<DataContext>();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "controle_escolar", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = " Controle Escolar", 
+                    Version = "v1",
+                    Description = "API visa gerenciar  cadastros de alunos, turmas e chamadas. "
+
+                });
                 c.DescribeAllEnumsAsStrings();
             });
         }
