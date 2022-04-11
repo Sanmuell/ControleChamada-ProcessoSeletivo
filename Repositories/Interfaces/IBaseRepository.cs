@@ -17,6 +17,10 @@ namespace controle_escolar.Repositories.Interfaces
         Task<IEnumerable<Turma>> GetAllTurmas();
 
         Task<IEnumerable<Chamada>> GetAllChamadas();
+        
+        Task<Aluno> GetAlunoByIdAsync(int id);
+        
+        Task<Turma> GetTurmaByIdAsync(int id);
 
         Task<bool> SaveChangesAsync();
 

@@ -31,6 +31,17 @@ namespace controle_escolar.Controllers
                 : BadRequest("Turmas não encontradass");
         }
 
+        
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Turma>> GetTurmaById(int id)
+        {
+            var turma = await _repository.GetTurmaByIdAsync(id);
+
+            return turma != null
+                ? Ok(turma)
+                : BadRequest("Turma não encontrada");
+        }
+        
 
         [HttpPost]
         public async Task<IActionResult> Post(Turma turma)

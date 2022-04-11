@@ -33,7 +33,9 @@ namespace controle_escolar.Controllers
                 : BadRequest("Nenhum registro de Chamada Encontrado");
         }
 
-
+    
+        
+        
         [HttpPost]
         public async Task<IActionResult> Post(Chamada chamada)
         {

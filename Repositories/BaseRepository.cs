@@ -47,6 +47,16 @@ namespace controle_escolar.Repositories
             return await _context.Chamada.ToListAsync();
         }
 
+        public async Task<Aluno> GetAlunoByIdAsync(int id)
+        {
+            return await _context.Alunos.FindAsync(id);
+        }
+
+        public async Task<Turma> GetTurmaByIdAsync(int id)
+        {
+            return await _context.Turmas.FindAsync(id);
+        }
+
 
         public async Task<bool> SaveChangesAsync()
         {

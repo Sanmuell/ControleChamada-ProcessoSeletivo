@@ -7,7 +7,7 @@ using controle_escolar.Repositories.Interfaces;
 
 namespace controle_escolar.Controllers
 {
-    
+
     [ApiController]
     [Route("api/[controller]")]
     public class AlunoController : ControllerBase
@@ -32,6 +32,16 @@ namespace controle_escolar.Controllers
                 : BadRequest("Alunos(a) não encontrados");
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Aluno>> GetAlunoById(int id)
+        {
+            var aluno = await _repository.GetAlunoByIdAsync(id);
+
+            return aluno != null
+                ? Ok(aluno)
+                : BadRequest("Aluno não encontrado");
+        }
+        
 
         [HttpPost]
         public async Task<IActionResult> Post(Aluno aluno)
@@ -50,12 +60,14 @@ namespace controle_escolar.Controllers
                 return BadRequest($"Erro: {ex} ");
 
             }
+
             return await _repository.SaveChangesAsync()
                 ? Ok("Empresa adicionada")
                 : BadRequest("Erro ao adicionar a Empresa");
 
+
+
         }
-
-
+        
+        }
     }
-}
