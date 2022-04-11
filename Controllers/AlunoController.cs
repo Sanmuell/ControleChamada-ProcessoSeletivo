@@ -41,7 +41,7 @@ namespace controle_escolar.Controllers
                 ? Ok(aluno)
                 : BadRequest("Aluno não encontrado");
         }
-        
+
 
         [HttpPost]
         public async Task<IActionResult> Post(Aluno aluno)
@@ -68,6 +68,24 @@ namespace controle_escolar.Controllers
 
 
         }
-        
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAluno(int id)
+        {
+            if (id <= 0) return BadRequest("Aluno(a) não informada");
+
+            var aluno = await _repository.GetAlunoByIdAsync(id);
+
+            if (aluno == null)
+                return NotFound("Aluno(a) não encontrado na base de dados");
+
+            _repository.Delete(aluno);
+
+            return await _repository.SaveChangesAsync()
+                ? Ok("Removido com sucesso")
+                : BadRequest("Erro ao deletar Aluno(a)");
+
+
         }
     }
+}

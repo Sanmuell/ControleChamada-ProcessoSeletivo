@@ -67,6 +67,23 @@ namespace controle_escolar.Controllers
 
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTurma(int id)
+        {
+            if (id <= 0) return BadRequest("Turma não informada");
+
+            var turma = await _repository.GetAlunoByIdAsync(id);
+
+            if (turma == null)
+                return NotFound("Turma não encontrada na base de dados");
+
+            _repository.Delete(turma);
+
+            return await _repository.SaveChangesAsync()
+                ? Ok("Removido com sucesso")
+                : BadRequest("Erro ao deletar Turma");
+
+        }
 
     }
 }
